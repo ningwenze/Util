@@ -1,0 +1,25 @@
+	/**
+	 * list反转工具类实现
+	 * 首先查看是否接受了快速随机访问RandomAccess或者是否小于18,如果小于18,则链表也可以接受
+	 * 快速随机访问表示是数组类型,可以通过下标快速查找,速度为n(1),链表类型查找一个数值则是n(n.size)
+	 * 如果是数组,或者小于18,则可以执行for循环
+	 * mid代表for循环次数,因为list.set可以实现先查询再set,利用这个功能,可以get的同时进行set
+	 * j代表最大下标,i代表最小下标
+	 */
+    ArrayList<Integer> arrayList = new ArrayList<Integer>();
+		arrayList.add(-1);
+		arrayList.add(3);
+		arrayList.add(3);
+		arrayList.add(-5);
+		arrayList.add(7);
+		arrayList.add(4);
+		arrayList.add(-9);
+		arrayList.add(-7);
+    int size = arrayList.size();
+    
+    if (size < 18 || arrayList instanceof RandomAccess) {
+		for (int i = 0, mid = size>>1,j = size-1; i < mid; i++,j--) {
+			arrayList.set(j,arrayList.set(i, (arrayList.get(j))));
+			System.out.println("arraylist="+arrayList);
+		}
+	}
